@@ -1,0 +1,22 @@
+// I'm using Vite, but I'm trying this for learning purposes 📚.
+{
+  // ❌ 이 프리셋은 vite에서 .babelrc 없이도 JSX, TypeScript, 최신 JS(ES6+)가 자동으로 변환되니까 필요없음.
+  // "presets": [
+  //   "@babel/preset-env",
+  //   [
+  //     "@babel/preset-react",
+  //     {
+  //       "runtime": "automatic" //옵션! 리액트를 JS로 변환할 때 자동으로 변환
+  //     }
+  //   ],
+  //   "@babel/preset-typescript"
+  // ],
+  "plugins": [
+    [
+      "@babel/plugin-transform-runtime", //Jest는 ESBuild를 지원하지 않기 때문에 babel-jest를 사용해야 함. 그래서 vite에서 이거 써야함.
+      {
+        "regenerator": true
+      }
+    ]
+  ]
+}

@@ -1,30 +1,54 @@
-<!-- MeloMay -->
+# React + TypeScript + Vite
 
-# 🎧 MeloMay
+This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
-MeloMay is Spotify clone with TypeScript, React.
-This project aims to replicate core music streaming functionalities using the Spotify Web API.
+Currently, two official plugins are available:
 
-## 📌 Key Features / Requirements Specification
+- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
+- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 
-1. Users can view **New released albums, Tracks, and Albums** on the homepage.
-2. Users can access **Home** and **Search** from the sidebar menu.
-3. Users can **log in** to their account.
-4. Logged-in users can view **playlists in the sidebar**.
-5. Users can **click on a playlist to view detailed information**.
-6. If a playlist has no songs, users can **search for songs** to add.
-7. Users can **search for a song and click the ➕ button** to add it instantly.
-8. Users can **click the ➕ button to create a new playlist**.
-9. Clicking **Search in the menu** redirects to the search page.
-10. The **search page displays categories**.
-11. Users can **search for songs, artists, or albums** on the search page.
-12. Search results include **Top Results, Songs, Artists, and Albums**.
-13. Clicking the `➕` button allows users to **select a playlist** to add a song.
-14. Clicking a playlist **adds the selected song to it**.
-15. If users are not logged in, a **"Please log in" message** appears at the bottom.
-16. If users try to access a playlist without logging in, a **login prompt and button** appear.
-17. Users can **log out** from their account.
+## Expanding the ESLint configuration
 
-### 📌 Notes
+If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
 
-- Ensure having a **Spotify Developer Account** and registering the app in the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/). Refer to the [official Spotify Web API documentation](https://developer.spotify.com/documentation/web-api/) for more details.
+```js
+export default tseslint.config({
+  extends: [
+    // Remove ...tseslint.configs.recommended and replace with this
+    ...tseslint.configs.recommendedTypeChecked,
+    // Alternatively, use this for stricter rules
+    ...tseslint.configs.strictTypeChecked,
+    // Optionally, add this for stylistic rules
+    ...tseslint.configs.stylisticTypeChecked,
+  ],
+  languageOptions: {
+    // other options...
+    parserOptions: {
+      project: ['./tsconfig.node.json', './tsconfig.app.json'],
+      tsconfigRootDir: import.meta.dirname,
+    },
+  },
+})
+```
+
+You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+
+```js
+// eslint.config.js
+import reactX from 'eslint-plugin-react-x'
+import reactDom from 'eslint-plugin-react-dom'
+
+export default tseslint.config({
+  plugins: {
+    // Add the react-x and react-dom plugins
+    'react-x': reactX,
+    'react-dom': reactDom,
+  },
+  rules: {
+    // other rules...
+    // Enable its recommended typescript rules
+    ...reactX.configs['recommended-typescript'].rules,
+    ...reactDom.configs.recommended.rules,
+  },
+})
+```
