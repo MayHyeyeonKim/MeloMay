@@ -1,10 +1,7 @@
 import { Route, Routes } from "react-router";
 import "./App.css";
-import AppLayout from "./layout/AppLayout";
-import SearchPage from "./pages/SearchPage";
-import HomePage from "./pages/HomePage";
-import SearchWithKeywordPage from "./pages/SearchWithKeywordPage";
-import LibraryPage from "./pages/LibraryPage";
+import { lazy, Suspense } from "react";
+import LoadingSpinner from "./common/components/LoadingSpinner";
 /**
 0. sidebar
 1. landingPage /
@@ -14,17 +11,28 @@ import LibraryPage from "./pages/LibraryPage";
 5. mobileVersion - playlist /playlist
 */
 
+// Lazy Loading
+const AppLayout = lazy(() => import("./layout/AppLayout"));
+const HomePage = lazy(() => import("./pages/HomePage"));
+const SearchPage = lazy(() => import("./pages/SearchPage"));
+const SearchWithKeywordPage = lazy(
+  () => import("./pages/SearchWithKeywordPage")
+);
+const LibraryPage = lazy(() => import("./pages/LibraryPage"));
+
 function App() {
   return (
-    <Routes>
-      <Route path="/" element={<AppLayout />}>
-        <Route index element={<HomePage />} />
-        <Route path="search" element={<SearchPage />} />
-        <Route path="search/:keyword" element={<SearchWithKeywordPage />} />
-        <Route path="playlist/:id" element={<LibraryPage />} />
-        {/* <Route path="playlist" element={<PlaylistPage />} /> */}
-      </Route>
-    </Routes>
+    <Suspense fallback={<LoadingSpinner />}>
+      <Routes>
+        <Route path="/" element={<AppLayout />}>
+          <Route index element={<HomePage />} />
+          <Route path="search" element={<SearchPage />} />
+          <Route path="search/:keyword" element={<SearchWithKeywordPage />} />
+          <Route path="playlist/:id" element={<LibraryPage />} />
+          {/* <Route path="playlist" element={<PlaylistPage />} /> */}
+        </Route>
+      </Routes>
+    </Suspense>
   );
 }
 
