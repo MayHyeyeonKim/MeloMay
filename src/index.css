@@ -16,6 +16,7 @@
 a {
   @apply font-medium text-blue-500 no-underline;
 }
+
 a:hover {
   @apply text-blue-400;
 }
@@ -36,9 +37,11 @@ button {
   :root {
     @apply text-gray-900 bg-white;
   }
+
   a:hover {
     @apply text-indigo-500;
   }
+
   button {
     @apply bg-gray-100;
   }

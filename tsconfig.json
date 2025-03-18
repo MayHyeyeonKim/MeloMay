@@ -22,8 +22,8 @@
       "@components/*": ["src/components/*"],
       "@utils/*": ["src/utils/*"],
       "@hooks/*": ["src/hooks/*"]
-    }
-    // "allowImportingTsExtensions": true
+    },
+    "allowImportingTsExtensions": true
   },
   "include": ["src", "src/**/*.ts", "src/**/*.tsx"],
   "exclude": ["node_modules", "dist", "build"]
