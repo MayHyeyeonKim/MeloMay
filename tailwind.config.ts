@@ -1,47 +1,44 @@
 import type { Config } from "tailwindcss";
+import defaultTheme from "tailwindcss/defaultTheme";
 
 const config: Config = {
-    content: ["./src/**/*.{html,js,jsx,ts,tsx}"],
+    content: [
+        "./index.html",
+        "./src/**/*.{js,ts,jsx,tsx,css}",
+    ],
+    darkMode: "media", // 시스템 다크 모드 감지
     theme: {
         extend: {
             colors: {
                 primary: "#1ed760",
                 secondary: "#ffffff",
-                background: {
-                    default: "#000000",
-                    paper: "#121212",
-                },
-                text: {
-                    primary: "#ffffff",
-                    secondary: "#b3b3b3",
-                },
-                action: {
-                    hover: "#282828",
-                    active: "#333333",
-                },
+                "bg-default": "#000000",
+                "bg-paper": "#121212",
+                "text-primary-custom": "#ffffff",
+                "text-secondary-custom": "#b3b3b3",
+                "hover-action": "#282828",
+                "active-action": "#333333",
             },
             fontFamily: {
-                sans: ["Roboto", "Arial", "sans-serif"],
+                sans: ["Inter", "sans-serif"],
             },
             fontSize: {
-                h1: "24px",
-                h2: "1rem",
-                body1: "14px",
-                subtitle1: "0.6875rem",
+                xl: "24px",
+                lg: "1rem",
+                base: "14px",
+                sm: "0.6875rem",
             },
             borderRadius: {
                 lg: "30px",
+                xl: "40px",
             },
             spacing: {
-                buttonPaddingY: "8px",
-                buttonPaddingX: "32px",
-            },
-            fontWeight: {
-                bold: 700,
+                "btn-x": "32px",
+                "btn-y": "8px",
             },
         },
     },
-    plugins: [],
+    // plugins: [require("@tailwindcss/forms"), require("@tailwindcss/typography")],
 };
 
-export default config;
+export default config; 
