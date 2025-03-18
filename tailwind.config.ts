@@ -4,10 +4,7 @@ import defaultTheme from "tailwindcss/defaultTheme";
 const config: Config = {
     content: [
         "./index.html",
-        "./src/**/*.{js,ts,jsx,tsx,css}", // 기존 경로 유지
-        "./src/components/**/*.{js,ts,jsx,tsx}", // 컴포넌트 폴더 직접 지정
-        "./src/layouts/**/*.{js,ts,jsx,tsx}", // 레이아웃 폴더 직접 지정
-        "./src/pages/**/*.{js,ts,jsx,tsx}" // 페이지 폴더 직접 지정
+        "./src/**/*.{js,ts,jsx,tsx,css}",
     ],
     darkMode: "media", // 시스템 다크 모드 감지
     theme: {
