@@ -3,8 +3,14 @@ export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
     extend: {
+      colors: {
+        primary: "#FFFFFF",
+        secondary: "#C0C0C0",
+      },
       backgroundColor: {
-        background: "#000000",
+        outside: "#111111",
+        background: "#121212",
+        backgroundPager: "#121212",
       },
     },
   },
