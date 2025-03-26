@@ -1,7 +1,11 @@
+import EmptyPlaylist from "./EmptyPlaylist";
+import LibraryHead from "./LibraryHead";
+
 const YourLibrary = () => {
   return (
     <>
-      <p>your Library</p>
+      <LibraryHead />
+      <EmptyPlaylist />
     </>
   );
 };
