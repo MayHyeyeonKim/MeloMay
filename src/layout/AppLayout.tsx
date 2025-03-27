@@ -1,6 +1,7 @@
 import { Outlet } from "react-router";
 import HomeAndSearch from "./components/HomeAndSearch";
 import YourLibrary from "./components/YourLibrary";
+import Navbar from "./components/Navbar";
 
 const AppLayout = () => {
   return (
@@ -20,6 +21,7 @@ const AppLayout = () => {
 
       {/* Main Content */}
       <div className="flex-1 p-4 bg-backgroundPager rounded-lg text-green-500">
+        <Navbar />
         <Outlet />
       </div>
     </div>
