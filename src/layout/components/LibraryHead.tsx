@@ -7,7 +7,9 @@ const LibraryHead = () => {
         <Bookmark size={20} />
         <p>Your Library</p>
       </div>
-      <Plus size={20} className="text-green-500" />
+      <button className="text-green-500 hover:opacity-80 transition">
+        <Plus size={20} />
+      </button>
     </div>
   );
 };
