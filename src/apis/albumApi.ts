@@ -11,6 +11,6 @@ export const getNewReleases = async (clientCredentialToken: string): Promise<Get
         })
         return response.data
     } catch (error) {
-        throw new Error("fail to ferch new releases")
+        throw new Error("fail to fetch new releases")
     }
 }
