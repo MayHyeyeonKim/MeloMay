@@ -1,7 +1,8 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import LoadingSpinner from "./common/components/LoadingSpinner";
+import useExchangeToken from "./hooks/useExchangeToken";
 /**
 0. sidebar
 1. landingPage /
@@ -21,6 +22,17 @@ const SearchWithKeywordPage = lazy(
 const LibraryPage = lazy(() => import("./pages/LibraryPage"));
 
 function App() {
+  const urlParams = new URLSearchParams(window.location.search);
+  const code = urlParams.get("code");
+  const codeVerifier = localStorage.getItem("code_verifier");
+  const { mutate: exchangeToken } = useExchangeToken();
+
+  useEffect(() => {
+    if (code && codeVerifier) {
+      exchangeToken({ code, codeVerifier });
+    }
+  }, [code, codeVerifier, exchangeToken]);
+
   return (
     <Suspense fallback={<LoadingSpinner />}>
       <Routes>
