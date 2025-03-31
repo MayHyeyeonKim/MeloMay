@@ -25,7 +25,7 @@ const NewReleases = () => {
           {albums.map((album) => (
             <div
               key={album.id}
-              className="bg-gray-800 text-white p-4 rounded shadow"
+              className="bg-gray-800 text-white p-4 rounded-xl shadow"
             >
               <Card
                 image={album.images[0].url}
