@@ -32,7 +32,7 @@ const PlaylistItem = ({
         <div className="w-12 h-12 bg-gray-700 rounded-md" />
       )}
       <div className="flex flex-col">
-        <p className="text-white text-sm font-semibold">{name}</p>
+        <p className="text-green-500 text-sm font-semibold">{name}</p>
         <p className="text-neutral-400 text-xs">{artistName}</p>
       </div>
     </button>

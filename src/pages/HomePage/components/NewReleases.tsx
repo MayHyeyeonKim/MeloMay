@@ -6,7 +6,7 @@ import useGetNewReleases from "../../../hooks/useGetNewReleases";
 const NewReleases = () => {
   const { data, error, isLoading } = useGetNewReleases();
 
-  console.log("들어온 데이타: ", data);
+  // console.log("들어온 데이타: ", data);
 
   if (isLoading) {
     return <LoadingSpinner />;

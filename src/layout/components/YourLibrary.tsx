@@ -1,12 +1,30 @@
+import ErrorMessage from "../../common/components/ErrorMessage";
+import LoadingSpinner from "../../common/components/LoadingSpinner";
 import useGetCurrentUserPlaylists from "../../hooks/useGetCurrentUserPlaylists";
+import useGetCurrentUserProfile from "../../hooks/useGetCurrentUserProfile";
 import EmptyPlaylist from "./EmptyPlaylist";
 import LibraryHead from "./LibraryHead";
 import Playlist from "./playlist";
 
 const YourLibrary = () => {
-  const { data } = useGetCurrentUserPlaylists({ limit: 10, offset: 0 });
-  const playlists = data?.items ?? [];
+  const { data, isLoading, error } = useGetCurrentUserPlaylists({
+    limit: 10,
+    offset: 0,
+  });
+  console.log("data는? ", data); //last page
+  const playlists = data?.pages.flatMap((page) => page.items) ?? [];
   console.log("playlists???", playlists);
+
+  const { data: user } = useGetCurrentUserProfile();
+  if (!user) return <EmptyPlaylist />;
+
+  if (isLoading) {
+    return <LoadingSpinner />;
+  }
+
+  if (error) {
+    return <ErrorMessage errorMessage={error.message} />;
+  }
 
   return (
     <div className="h-full">
