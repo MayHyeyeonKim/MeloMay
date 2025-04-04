@@ -28,9 +28,9 @@ const YourLibrary = () => {
     }
   }, [inView]);
 
-  console.log("data는? ", data); //last page
+  // console.log("data는? ", data); //last page
   const playlists = data?.pages.flatMap((page) => page.items) ?? [];
-  console.log("playlists???", playlists);
+  // console.log("playlists???", playlists);
 
   const { data: user } = useGetCurrentUserProfile();
   if (!user) return <EmptyPlaylist />;
