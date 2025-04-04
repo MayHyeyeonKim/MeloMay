@@ -49,8 +49,7 @@ const YourLibrary = () => {
       {playlists.length > 0 ? (
         <div className="overflow-y-auto max-h-[calc(100vh-200px)] space-y-2 px-2">
           <Playlist playlists={playlists} />
-          <div ref={ref}>{isFetchingNextPage && <LoadingSpinner />}</div> //
-          infinite scroll
+          <div ref={ref}>{isFetchingNextPage && <LoadingSpinner />}</div>
         </div>
       ) : (
         <EmptyPlaylist />
