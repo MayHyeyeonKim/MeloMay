@@ -1,5 +1,7 @@
 import { ApiResponse } from "./apiResponse";
-import { Episode, ExternalUrls, Followers, Image, Owner, Track } from "./commonType";
+import { ExternalUrls, Followers, Image, Owner, } from "./commonType";
+import { Episode } from "./Episode";
+import { Track } from "./track";
 
 export interface GetCurrentUserPlaylistRequest {
     limit?: number;
@@ -59,3 +61,10 @@ export interface GetPlaylistRequest {
     fields?: string;
     additional_types?: string;
 }
+
+export interface GetPlaylistItemsRequest extends GetPlaylistRequest {
+    offset?: number;
+    limit?: number;
+}
+
+export type GetPlaylistItemsResponse = ApiResponse<PlaylistTrack>
