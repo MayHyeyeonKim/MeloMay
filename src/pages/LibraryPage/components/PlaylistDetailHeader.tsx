@@ -1,4 +1,5 @@
 import { FC } from "react";
+import MusicNoteIcon from "@mui/icons-material/MusicNote";
 
 interface PlaylistDetailHeaderProps {
   playlist?: any;
@@ -15,8 +16,8 @@ const PlaylistDetailHeader: FC<PlaylistDetailHeaderProps> = ({ playlist }) => {
             className="rounded-md w-full max-w-[200px] h-auto"
           />
         ) : (
-          <div className="flex items-center justify-center bg-gray-700 rounded-md w-[200px] h-[200px]">
-            <p>Music Note Icon 같은게 옴</p>
+          <div className="flex items-center justify-center ">
+            <MusicNoteIcon className="text-white" fontSize="large" />
           </div>
         )}
       </div>
