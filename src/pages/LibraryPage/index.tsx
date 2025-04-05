@@ -22,10 +22,17 @@ const LibraryPage = () => {
   } = useGetPlaylistItems({ playlist_id: id, limit: 10, offset: 0 });
   console.log("playlistItems detail=>", playlistItems);
 
+  const totalTracks = playlistItems?.pages[0]?.total ?? 0;
+
   return (
     <>
       <PlaylistDetailHeader playlist={playlist} />
-      <PlaylistDetailItems />
+
+      {totalTracks === 0 ? (
+        <p>서치</p>
+      ) : (
+        <PlaylistDetailItems playlistItems={playlistItems} />
+      )}
     </>
   );
 };
