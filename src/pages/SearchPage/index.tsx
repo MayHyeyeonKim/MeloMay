@@ -1,7 +1,11 @@
-import React from "react";
+import EmptyPlaylistWithSearch from "../LibraryPage/components/EmptyPlaylistWithSearch";
 
 const SearchPage = () => {
-  return <div> searchPage</div>;
+  return (
+    <div>
+      <EmptyPlaylistWithSearch />
+    </div>
+  );
 };
 
 export default SearchPage;
