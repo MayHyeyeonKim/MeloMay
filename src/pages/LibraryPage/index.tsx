@@ -4,6 +4,9 @@ import useGetPlaylist from "../../hooks/useGetPlaylist";
 import PlaylistDetailHeader from "./components/PlaylistDetailHeader";
 import PlaylistDetailItems from "./components/PlaylistDetailItems";
 import useGetPlaylistItems from "../../hooks/useGetPlaylistItems";
+import { InputAdornment, TextField } from "@mui/material";
+import { SearchIcon } from "lucide-react";
+import { PAGE_LIMIT } from "../../configs/commonConfig";
 
 const LibraryPage = () => {
   const { id } = useParams<{ id: string }>();
@@ -19,7 +22,7 @@ const LibraryPage = () => {
     isFetchingNextPage,
     fetchNextPage,
     // eslint-disable-next-line react-hooks/rules-of-hooks
-  } = useGetPlaylistItems({ playlist_id: id, limit: 10, offset: 0 });
+  } = useGetPlaylistItems({ playlist_id: id, limit: PAGE_LIMIT, offset: 0 });
   console.log("playlistItems detail=>", playlistItems);
 
   const totalTracks = playlistItems?.pages[0]?.total ?? 0;
@@ -28,10 +31,42 @@ const LibraryPage = () => {
     <>
       <PlaylistDetailHeader playlist={playlist} />
 
-      {totalTracks === 0 ? (
-        <p>서치</p>
+      {playlistItems === undefined ? null : totalTracks === 0 ? (
+        <div className="flex flex-col items-center gap-4 mt-10">
+          <p className="text-xl font-semibold">
+            Let's find something for your playlist
+          </p>
+          <TextField
+            fullWidth
+            placeholder="Search for songs or episodes"
+            variant="outlined"
+            size="small"
+            InputProps={{
+              startAdornment: (
+                <InputAdornment position="start">
+                  <SearchIcon style={{ color: "#9ca3af" }} /> {/* gray-400 */}
+                </InputAdornment>
+              ),
+            }}
+            sx={{
+              backgroundColor: "#27272a", // neutral-800
+              borderRadius: "6px",
+              input: {
+                color: "white",
+                "::placeholder": {
+                  color: "#9ca3af", // gray-400
+                },
+              },
+            }}
+          />
+        </div>
       ) : (
-        <PlaylistDetailItems playlistItems={playlistItems} />
+        <PlaylistDetailItems
+          playlistItems={playlistItems}
+          fetchNextPage={fetchNextPage}
+          hasNextPage={hasNextPage}
+          isFetchingNextPage={isFetchingNextPage}
+        />
       )}
     </>
   );
