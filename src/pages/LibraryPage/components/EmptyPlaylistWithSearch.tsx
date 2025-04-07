@@ -59,12 +59,20 @@ const EmptyPlaylistWithSearch = () => {
         onChange={handleSearchKeyword}
       />
 
-      <SearchResultListlist
-        list={flattenedTracks}
-        hasNextPage={hasNextPage}
-        fetchNextPage={fetchNextPage}
-        isFetchingNextPage={isFetchingNextPage}
-      />
+      {flattenedTracks.length === 0 && !isLoading && (
+        <p className="text-gray-400 text-sm text-center mt-4">
+          No results found
+        </p>
+      )}
+
+      {flattenedTracks.length > 0 && (
+        <SearchResultListlist
+          list={flattenedTracks}
+          hasNextPage={hasNextPage}
+          fetchNextPage={fetchNextPage}
+          isFetchingNextPage={isFetchingNextPage}
+        />
+      )}
     </div>
   );
 };
