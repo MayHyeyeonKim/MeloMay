@@ -1,7 +1,7 @@
 import { SimplifiedAlbum } from "./album";
 import { ApiResponse } from "./apiResponse";
 import { Artist } from "./artist";
-import { Episode, Show, SimplifiedEpisode } from "./Episode";
+import { Show, SimplifiedEpisode } from "./Episode";
 import { SimplifiedPlaylist } from "./playlist";
 import { SimplifiedAudioBook, Track } from "./track";
 

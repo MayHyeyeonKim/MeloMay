@@ -5,7 +5,7 @@ import useGetCurrentUserPlaylists from "../../hooks/useGetCurrentUserPlaylists";
 import useGetCurrentUserProfile from "../../hooks/useGetCurrentUserProfile";
 import EmptyPlaylist from "./EmptyPlaylist";
 import LibraryHead from "./LibraryHead";
-import Playlist from "./playlist";
+import Playlist from "./Playlist";
 import { useEffect } from "react";
 
 const YourLibrary = () => {

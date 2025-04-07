@@ -1,24 +1,24 @@
-import { useMutation, useQueryClient } from "@tanstack/react-query"
-import useGetCurrentUserProfile from "./useGetCurrentUserProfile"
-import { createPlaylist } from "../apis/playlistApi"
-import { CreatePlaylistRequest } from "../models/playlist"
+import { useMutation, useQueryClient } from "@tanstack/react-query";
+import useGetCurrentUserProfile from "./useGetCurrentUserProfile";
+import { createPlaylist } from "../apis/playlistApi";
+import { CreatePlaylistRequest } from "../models/playlist";
 
 const useCreatePlaylist = () => {
-    const queryClient = useQueryClient()
-    const { data: user } = useGetCurrentUserProfile()
+    const queryClient = useQueryClient();
+    const { data: user } = useGetCurrentUserProfile();
+
     return useMutation({
-        mutationFn: (params: CreatePlaylistRequest) => {
-            if (user) {
-                return createPlaylist(user?.id, params)
+        mutationFn: async (params: CreatePlaylistRequest) => {
+            if (!user?.id) {
+                throw new Error("User ID is missing");
             }
-            return Promise.reject(new Error("user is not defined"))
+            return await createPlaylist(user.id, params);
         },
         onSuccess: () => {
-            queryClient.invalidateQueries({ queryKey: ["current-user-playlists"] })
-            console.log("success!")
-        }
-    })
+            queryClient.invalidateQueries({ queryKey: ["current-user-playlists"] });
+            console.log("success!");
+        },
+    });
+};
 
-}
-
-export default useCreatePlaylist
+export default useCreatePlaylist;

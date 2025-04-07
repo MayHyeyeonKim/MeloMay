@@ -1,5 +1,3 @@
-import axios from "axios"
-import { SPOTIFY_BASE_URL } from "../configs/commonConfig"
 import { User } from "../models/user"
 import api from "../utils/api"
 

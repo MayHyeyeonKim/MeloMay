@@ -8,17 +8,11 @@ import SearchResultListlist from "./SearchResultListlist";
 const EmptyPlaylistWithSearch = () => {
   const [keyword, setKeyword] = useState<string>("");
 
-  const {
-    data,
-    error,
-    isLoading,
-    fetchNextPage,
-    hasNextPage,
-    isFetchingNextPage,
-  } = useSearchItemsByKeyword({
-    q: keyword,
-    type: [SEARCH_TYPE.Track],
-  });
+  const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useSearchItemsByKeyword({
+      q: keyword,
+      type: [SEARCH_TYPE.Track],
+    });
 
   const handleSearchKeyword = (event: React.ChangeEvent<HTMLInputElement>) => {
     setKeyword(event.target.value);

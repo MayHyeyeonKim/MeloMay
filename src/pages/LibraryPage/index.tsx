@@ -15,8 +15,6 @@ const LibraryPage = () => {
 
   const {
     data: playlistItems,
-    isLoading: isPlaylistItemsLoading,
-    error: playlistItemsError,
     hasNextPage,
     isFetchingNextPage,
     fetchNextPage,

@@ -1,7 +1,6 @@
 import { SimplifiedAlbum } from "./album";
 import { Artist } from "./artist";
 import { Copyright, ExternalUrls, Image, Restrictions } from "./commonType";
-import { Show } from "./Episode";
 
 export interface Track {
     album?: SimplifiedAlbum;
