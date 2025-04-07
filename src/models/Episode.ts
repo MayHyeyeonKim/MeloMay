@@ -45,3 +45,5 @@ export interface Show {
     uri: string;
     total_episodes: number;
 }
+
+export type SimplifiedEpisode = Omit<Episode, "show">
